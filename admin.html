@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kansaya Community Admins</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #4b6cb7, #182848);
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-weight: 600;
+    font-size: 3rem;
+    margin-bottom: 0.2rem;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glowText 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes glowText {
+    from {
+      filter: drop-shadow(0 0 5px #ff9a9e);
+    }
+    to {
+      filter: drop-shadow(0 0 20px #fad0c4);
+    }
+  }
+
+  p.subtitle {
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: #d0d0d0;
+    margin-bottom: 3rem;
+    letter-spacing: 1.2px;
+  }
+
+  .admin-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 900px;
+    justify-content: center;
+  }
+
+  .admin-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    width: 220px;
+    padding: 1.7rem 1rem 2rem;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    color: #fff;
+    cursor: default;
+    transform: translateY(50px);
+    opacity: 0;
+    animation: cardFadeUp 0.8s forwards;
+  }
+
+  .admin-card:nth-child(1) {
+    animation-delay: 0.15s;
+  }
+  .admin-card:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  .admin-card:nth-child(3) {
+    animation-delay: 0.45s;
+  }
+  .admin-card:nth-child(4) {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes cardFadeUp {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .admin-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 3px solid #ff9a9e;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .admin-card:hover .admin-photo {
+    transform: scale(1.1) rotate(5deg);
+    border-color: #fad0c4;
+    box-shadow: 0 0 15px #fad0c4;
+  }
+
+  .admin-name {
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .admin-role {
+    font-weight: 300;
+    font-size: 1rem;
+    color: #ffc0cb;
+  }
+
+  footer {
+    margin-top: auto;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    color: #888;
+  }
+
+  @media (max-width: 600px) {
+    .admin-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .admin-card {
+      width: 80vw;
+    }
+  }
+</style>
+</head>
+<body>
+  <h1>admin di grub</h1>
+  <p class="subtitle">ini adalah daftar admin</p>
+  <div class="admin-container">
+    <div class="admin-card">
+      <img class="admin-photo" src="" />
+      <div class="admin-name">arthur</div>
+      <div class="admin-role">Admin</div>
+    </div>
+    <div class="admin-card">
+      <img class="admin-photo" src="" alt="Admin 2" />
+      <div class="admin-name">tfa</div>
+      <div class="admin-role">admin</div>
+    </div>
+    <div class="admin-card">
+      <img class="admin-photo" src="" alt="Admin 3" />
+      <div class="admin-name">fei</div>
+      <div class="admin-role">admin</div>
+    </div>
+    <div class="admin-card">
+      <img class="admin-photo" src="" alt="Admin 4" />
+      <div class="admin-name">akuya</div>
+      <div class="admin-role">admin</div>
+    </div>
+    <div class="admin-card">
+      <img class="admin-photo" src="" />
+      <div class="admin-name">dika</div>
+      <div class="admin-role">admin</div>
+    </div>
+  </div>
+  <footer>© 2024 Kansaya Community</footer>
+</body>
+</html>
+
