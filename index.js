@@ -27,7 +27,7 @@ actionButton.addEventListener('click', () => {
   setTimeout(() => {
     actionButton.classList.remove('button-glow');
     // Redirect to another website after glow effect
-    window.location.href = 'https://example.com'; // Change URL to your target website
+    window.location.href = 'https://realms.gg/tugUq-95zUYancU'; // Change URL to your target website
   }, 500);
 });
 
