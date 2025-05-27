@@ -22,10 +22,12 @@ leaves.forEach((leaf, index) => {
 
 // Button click magic glow effect
 const actionButton = document.querySelector('.action-button');
-actionButton.addEventListener('click', (https://realms.gg/tugUq-95zUYancU) => {
+actionButton.addEventListener('click', () => {
   actionButton.classList.add('button-glow');
   setTimeout(() => {
     actionButton.classList.remove('button-glow');
+    // Redirect to another website after glow effect
+    window.location.href = 'https://example.com'; // Change URL to your target website
   }, 500);
 });
 
@@ -44,3 +46,4 @@ document.addEventListener('mousemove', (e) => {
     leaf.style.transform = `translate(calc(${moveX}px + var(--float-x, 0px)), calc(${moveY}px + var(--float-y, 0px))) rotate(${moveX * 2}deg)`;
   });
 });
+
