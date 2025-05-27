@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cara Tidur Cepat - Tips & Informasi</title>
+<style>
+  /* Reset & base */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1E3C72, #2A5298);
+    color: #f0f8ff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+  }
+  .container {
+    max-width: 700px;
+    background: rgba(30, 60, 114, 0.85);
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(50, 100, 180, 0.6);
+    padding: 30px;
+    animation: fadeIn 2s ease forwards;
+  }
+  h1 {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 16px;
+    letter-spacing: 1.6px;
+    text-shadow: 2px 2px 8px #14345a;
+  }
+  h2 {
+    margin-top: 30px;
+    margin-bottom: 14px;
+    font-size: 1.8rem;
+    text-align: center;
+    color: #a0c8f0;
+  }
+  p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    text-shadow: 0 0 4px #1b2f54;
+  }
+  ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 20px;
+  }
+  ul li {
+    position: relative;
+    margin-bottom: 14px;
+    padding-left: 28px;
+    font-size: 1.2rem;
+    cursor: default;
+  }
+  ul li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    top: 3px;
+    color: #adebad;
+    font-weight: bold;
+    transform-origin: center;
+    animation: pulse 2s infinite ease-in-out;
+  }
+  button {
+    display: block;
+    background-color: #5ab9ea;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 32px;
+    margin: 25px auto 0 auto;
+    font-size: 1.2rem;
+    color: #fff;
+    box-shadow: 0 6px 15px rgba(90, 185, 234, 0.6);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  button:hover {
+    background-color: #3791d5;
+    transform: scale(1.05);
+  }
+  button:focus {
+    outline: 3px solid #acd6ff;
+  }
+  .extra-tips {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.7s ease, opacity 0.7s ease;
+    font-size: 1.15rem;
+    margin-top: 20px;
+    line-height: 1.5;
+    color: #d0e9ff;
+  }
+  .extra-tips.show {
+    max-height: 500px;
+    opacity: 1;
+  }
+  /* Animations */
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+  @keyframes pulse {
+    0%, 100% {transform: scale(1);}
+    50% {transform: scale(1.2);}
+  }
+  footer {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #a0bcd9;
+    text-align: center;
+  }
+  @media (max-width: 600px) {
+    .container {
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+    ul li {
+      font-size: 1rem;
+      padding-left: 22px;
+    }
+  }
+</style>
+</head>
+<body>
+  <article class="container" role="main" aria-label="Informasi cara tidur cepat">
+    <h1>Cara Tidur dengan Cepat</h1>
+    <p>Tidur yang cukup dan berkualitas sangat penting bagi kesehatan fisik dan mental kita. Namun, banyak orang mengalami kesulitan untuk tidur dengan cepat. Berikut ini beberapa tips efektif untuk membantu Anda tidur lebih cepat dan lebih nyenyak.</p>
+    
+    <h2>Tips Tidur Cepat</h2>
+    <ul>
+      <li>Jaga rutinitas tidur yang konsisten dengan waktu tidur dan bangun yang sama setiap hari.</li>
+      <li>Ciptakan suasana kamar yang nyaman, gelap, dan sejuk.</li>
+      <li>Hindari penggunaan gawai seperti ponsel atau komputer 1 jam sebelum tidur.</li>
+      <li>Relaksasi dengan teknik pernapasan dalam atau meditasi ringan.</li>
+      <li>Batasi konsumsi kafein dan makanan berat di malam hari.</li>
+      <li>Lakukan aktivitas fisik ringan di sore hari untuk membantu tubuh lelah dengan sehat.</li>
+    </ul>
+
+    <button id="showTipsBtn" aria-expanded="false" aria-controls="extraTips">Lihat Tips Tambahan</button>
+    <section id="extraTips" class="extra-tips" aria-hidden="true">
+      <h2>Tips Tambahan</h2>
+      <p>Jika Anda masih kesulitan tidur, cobalah mandi air hangat sebelum tidur atau dengarkan suara alam yang menenangkan. Hindari stres dengan menulis jurnal atau membaca buku ringan. Jangan tunda tidur meskipun tidak bisa langsung tertidur—relax dan bersabar membantu tubuh menyesuaikan diri.</p>
+    </section>
+    <footer>
+      &copy; 2024 Informasi Tidur Cepat - Semua hak cipta dilindungi.
+    </footer>
+  </article>
+
+  <script>
+    const btn = document.getElementById('showTipsBtn');
+    const extraTips = document.getElementById('extraTips');
+
+    btn.addEventListener('click', () => {
+      const isShown = extraTips.classList.toggle('show');
+      extraTips.setAttribute('aria-hidden', !isShown);
+      btn.setAttribute('aria-expanded', isShown);
+      btn.textContent = isShown ? "Sembunyikan Tips Tambahan" : "Lihat Tips Tambahan";
+    });
+  </script>
+</body>
+</html>
+
