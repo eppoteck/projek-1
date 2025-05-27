@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kansaya Sports Car Shop</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    min-height: 100vh;
+    color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: #f94d6a;
+    text-shadow: 0 0 10px #f94d6a;
+    animation: pulseGlow 2.5s infinite alternate;
+  }
+
+  @keyframes pulseGlow {
+    from {
+      text-shadow: 0 0 8px #f94d6a;
+    }
+    to {
+      text-shadow: 0 0 20px #ff758f;
+    }
+  }
+
+  p.subtitle {
+    font-weight: 400;
+    color: #dac4d4;
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+  }
+
+  .product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 960px;
+    justify-content: center;
+  }
+
+  .product-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    width: 250px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px rgba(249, 77, 106, 0.3);
+    color: white;
+    text-align: center;
+    cursor: default;
+    transform: translateY(50px);
+    opacity: 0;
+    animation: slideUpFade 0.8s forwards;
+    transition: transform 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(0) scale(1.07);
+    box-shadow: 0 15px 30px rgba(249, 77, 106, 0.6);
+  }
+
+  .product-card:nth-child(1) { animation-delay: 0.1s; }
+  .product-card:nth-child(2) { animation-delay: 0.3s; }
+  .product-card:nth-child(3) { animation-delay: 0.5s; }
+  .product-card:nth-child(4) { animation-delay: 0.7s; }
+
+  @keyframes slideUpFade {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .product-image {
+    width: 100%;
+    height: 140px;
+    border-radius: 15px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(249,77,106,0.6);
+    animation: zoomInImage 0.8s ease forwards;
+  }
+
+  @keyframes zoomInImage {
+    from {
+      transform: scale(0.85);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .product-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-price {
+    font-size: 1.1rem;
+    color: #ff758f;
+    margin-bottom: 1rem;
+  }
+
+  .buy-btn {
+    background: #f94d6a;
+    border: none;
+    padding: 0.6rem 1.4rem;
+    font-size: 1rem;
+    border-radius: 30px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 12px rgba(249, 77, 106, 0.5);
+    animation: pulseButton 2.5s infinite alternate;
+  }
+  
+  .buy-btn:hover {
+    background: #ff758f;
+    box-shadow: 0 8px 16px rgba(255, 117, 137, 0.8);
+  }
+
+  @keyframes pulseButton {
+    from {
+      box-shadow: 0 6px 12px rgba(249, 77, 106, 0.6);
+    }
+    to {
+      box-shadow: 0 12px 24px rgba(255, 117, 137, 0.85);
+    }
+  }
+
+  footer {
+    margin-top: auto;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    color: #bbb;
+  }
+
+  @media (max-width: 600px) {
+    .product-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .product-card {
+      width: 90vw;
+    }
+  }
+</style>
+</head>
+<body>
+  <h1>Kansaya Sports Car Shop</h1>
+  <p class="subtitle">Exclusive Collection of Sports Cars for Sale</p>
+  <div class="product-container" id="product-container">
+    <!-- Products will be inserted by JavaScript -->
+  </div>
+  <footer>© 2024 Kansaya Community Shop</footer>
+
+  <script>
+    const phoneNumber = "6281234567890"; // Replace with your WhatsApp number in international format without plus sign
+
+    const products = [
+      {
+        id: 1,
+        name: "Ferrari F8 Tributo",
+        price: "IDR 5,000,000,000",
+        image: "https://cdn.pixabay.com/photo/2017/02/24/22/50/ferrari-2098653_1280.jpg"
+      },
+      {
+        id: 2,
+        name: "Lamborghini Huracán",
+        price: "IDR 4,500,000,000",
+        image: "https://cdn.pixabay.com/photo/2015/01/19/13/51/lamborghini-604199_1280.jpg"
+      },
+      {
+        id: 3,
+        name: "Porsche 911 Turbo S",
+        price: "IDR 3,800,000,000",
+        image: "https://cdn.pixabay.com/photo/2020/07/09/00/05/porsche-5389651_1280.jpg"
+      },
+      {
+        id: 4,
+        name: "McLaren 720S",
+        price: "IDR 4,200,000,000",
+        image: "https://cdn.pixabay.com/photo/2018/08/11/05/44/mclaren-3597451_1280.jpg"
+      }
+    ];
+
+    function openWhatsApp(productName) {
+      const message = encodeURIComponent(`Hi, I am interested in buying the sports car: ${productName}`);
+      window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+    }
+
+    const container = document.getElementById('product-container');
+
+    products.forEach(product => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+
+      card.innerHTML = `
+        <img src="${product.image}" alt="${product.name}" class="product-image" />
+        <div class="product-name">${product.name}</div>
+        <div class="product-price">${product.price}</div>
+        <button class="buy-btn" onclick="openWhatsApp('${product.name}')">Buy Now</button>
+      `;
+
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>
+
