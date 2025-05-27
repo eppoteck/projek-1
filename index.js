@@ -22,7 +22,7 @@ leaves.forEach((leaf, index) => {
 
 // Button click magic glow effect
 const actionButton = document.querySelector('.action-button');
-actionButton.addEventListener('click', () => {
+actionButton.addEventListener('click', (https://realms.gg/tugUq-95zUYancU) => {
   actionButton.classList.add('button-glow');
   setTimeout(() => {
     actionButton.classList.remove('button-glow');
