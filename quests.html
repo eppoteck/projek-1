@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RPG Quest System</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+  body {
+    margin: 0;
+    background: linear-gradient(to top, #0b3d0b 0%, #1a5231 70%, #3a7d3a 100%);
+    font-family: 'Cinzel', serif;
+    color: #dbe8a6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem 1rem 3rem;
+  }
+  h1 {
+    font-size: 3rem;
+    margin: 1rem 0 1rem;
+    color: #b5f270;
+    text-shadow:
+      0 0 8px #a8c856,
+      0 0 12px #8db43f,
+      0 0 16px #6f9244;
+  }
+  .quest-list {
+    max-width: 600px;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 2rem;
+  }
+  .quest-item {
+    background: rgba(48, 77, 15, 0.8);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 0 15px #488143;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .quest-item.completed {
+    background: #506f3d;
+    box-shadow: 0 0 10px #a9d27e inset;
+    color: #a3c56d;
+    cursor: default;
+  }
+  .quest-item:hover:not(.completed) {
+    box-shadow: 0 0 30px #aade70;
+  }
+  .quest-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    user-select: none;
+  }
+  .quest-desc {
+    font-size: 1rem;
+    font-style: italic;
+    color: #b6d086;
+    user-select: none;
+  }
+  .complete-btn {
+    background-color: #7ea946;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    color: #eafec5;
+    font-weight: 700;
+    box-shadow: 0 0 10px #a5d06f;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+  .complete-btn:hover:not(:disabled) {
+    background-color: #a3ce54;
+  }
+  .complete-btn:disabled {
+    background-color: #4e6c2e;
+    cursor: default;
+    box-shadow: none;
+  }
+  /* Notification popup */
+  #notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #a3ce54cc;
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    color: #243615;
+    font-weight: 700;
+    box-shadow:
+      0 0 15px #d6f670,
+      inset 0 0 25px #e9f484;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    user-select: none;
+    font-family: 'Cinzel', serif;
+    max-width: 320px;
+  }
+  #notification.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+  <h1>Quest Log</h1>
+  <ul id="quest-list" class="quest-list"></ul>
+  <div id="notification"></div>
+
+<script>
+  const quests = [
+    { id: 1, name: "Find the Ancient Sword", desc: "Retrieve the legendary sword hidden deep in the forest.", reward: "100 Gold" },
+    { id: 2, name: "Defeat the Forest Troll", desc: "Defeat the troll terrorizing the northern village.", reward: "50 XP" },
+    { id: 3, name: "Collect Healing Herbs", desc: "Gather 10 healing herbs for the village healer.", reward: "Healing Potion" },
+    { id: 4, name: "Escort the Merchant", desc: "Protect the merchant traveling to the next town.", reward: "25 Gold" },
+  ];
+
+  const questList = document.getElementById('quest-list');
+  const notification = document.getElementById('notification');
+
+  // Load completed quests from localStorage
+  const completedQuests = JSON.parse(localStorage.getItem('completedQuests') || '[]');
+
+  function saveCompleted() {
+    localStorage.setItem('completedQuests', JSON.stringify(completedQuests));
+  }
+
+  function showNotification(message) {
+    notification.textContent = message;
+    notification.classList.add('show');
+    setTimeout(() => {
+      notification.classList.remove('show');
+    }, 4000);
+  }
+
+  function createQuestItem(quest) {
+    const li = document.createElement('li');
+    li.className = 'quest-item';
+    if (completedQuests.includes(quest.id)) {
+      li.classList.add('completed');
+    }
+
+    const textContainer = document.createElement('div');
+    textContainer.style.flexGrow = '1';
+
+    const nameEl = document.createElement('div');
+    nameEl.className = 'quest-name';
+    nameEl.textContent = quest.name;
+
+    const descEl = document.createElement('div');
+    descEl.className = 'quest-desc';
+    descEl.textContent = quest.desc;
+
+    textContainer.appendChild(nameEl);
+    textContainer.appendChild(descEl);
+
+    const btn = document.createElement('button');
+    btn.className = 'complete-btn';
+    btn.textContent = completedQuests.includes(quest.id) ? 'Completed' : 'Complete Quest';
+    btn.disabled = completedQuests.includes(quest.id);
+
+    btn.addEventListener('click', () => {
+      if (!completedQuests.includes(quest.id)) {
+        completedQuests.push(quest.id);
+        saveCompleted();
+        li.classList.add('completed');
+        btn.textContent = 'Completed';
+        btn.disabled = true;
+        showNotification(`Quest Completed! You received: ${quest.reward}`);
+      }
+    });
+
+    li.appendChild(textContainer);
+    li.appendChild(btn);
+    return li;
+  }
+
+  function loadQuests() {
+    questList.innerHTML = '';
+    quests.forEach(q => {
+      const qEl = createQuestItem(q);
+      questList.appendChild(qEl);
+    });
+  }
+
+  loadQuests();
+</script>
+</body>
+</html>
+
